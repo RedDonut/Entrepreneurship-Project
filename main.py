@@ -13,8 +13,18 @@ def amount_of_water_needed_weekly():
     "Garlic": .75,
     "Ginger": 1
   }
+  #prints the keys
+  print(plant_watering_inches.keys())
+  print("")
+  print("Please choose from the list shown above.\n")
+
   #input takes in the name of the plant
   plant_type = (input("Name of Plant: "))
+
+  #if the plant typed in is not found, ask again.
+  if plant_type not in plant_watering_inches:
+    print("Please choose from the list shown.\n")
+    amount_of_water_needed_weekly()
 
   #This finds the plant in the dictionary and assigns the value to watering_amount
   watering_amount = plant_watering_inches.get(plant_type)
@@ -22,8 +32,7 @@ def amount_of_water_needed_weekly():
   #input takes in the temperature
   temperature = int(input("What is the surrounding temperature in Fahreneheit: "))
 
-  #if temperature > 75 then add .1 inches of water per degree
-  #If temperature too high or low, end process
+  #if temperature > 75 then add .1 inches of water per degree. If temperature too high or low, end process. If the temperature is cooler than usual, then dont add any extra inches.
   if temperature > 75 and temperature < 87:
     difference = temperature - 75
     total_amount_needed = watering_amount + (difference * .1)
@@ -42,4 +51,5 @@ def amount_of_water_needed_weekly():
     print("inches")
   else:
     print("inch")
+  exit()
 amount_of_water_needed_weekly()
